@@ -86,39 +86,37 @@
 
 <body>
   <header class="header">
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-          <% if (image) { %>
-            <% if (imageLink) { %>
-              <a href="<%= imageLink %>">
-            <% } %>
-              <img class="pull-left" src="<%= image %>">
-            <% if (imageLink) { %>
-              </a>
-            <% } %>
-          <% } %>
-          <% if (title) {%>
-            <a <% if (titleLink) { %> href="<%= titleLink %>" <% } %> class="brand"><%= title %></a>
-          <% } %>
-          <ul class="nav">
-            <li ng-repeat="(url, name) in sections" ng-class="{active: isActivePath(url)}">
-              <a ng-href="{{url}}"><i class="icon-book icon-white"></i> {{name}}</a>
-            </li>
-          </ul>
+             <% if (image) { %>
+                <% if (imageLink) { %>
+                  <a href="<%= imageLink %>">
+                <% } %>
+                  <img class="pull-left" src="<%= image %>">
+                <% if (imageLink) { %>
+                  </a>
+                <% } %>
+              <% } %>
+              <% if (title) {%>
+                <a <% if (titleLink) { %> href="<%= titleLink %>" <% } %> class="navbar-brand"><%= title %></a>
+              <% } %>
+            <div class="navbar-header">
+                <ul class="nav navbar-nav">
+                    <li ng-repeat="(url, name) in sections" ng-class="{active: isActivePath(url)}">
+                        <a ng-href="{{url}}"><i class="glyphicon glyphicon-book"></i> {{name}}</a>
+                    </li>
+                </ul>
+            </div>
           <%= navContent %>
         </div>
-      </div>
-    </div>
+    </nav>
   </header>
-
   <div role="main" class="container">
     <div class="row clear-navbar"></div>
-
     <div class="row">
-      <div class="span12">
+      <div class="col-md-12">
         <!--[if lt IE 7]>
-        <p class="alert alert-error">Your browser is <em>ancient!</em>
+        <p class="alert alert-danger">Your browser is <em>ancient!</em>
           <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
           <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
           experience this site.
@@ -133,17 +131,14 @@
         </div>
         <![endif]-->
       </div>
-
     </div>
 
     <div class="row">
-      <div class="span3">
+      <div class="col-md-3">
         <form class="form-search" ng-submit="submitForm()">
           <% if (bestMatch) { %>
-          <div class="dropdown search"
-               ng-class="{open: focused && bestMatch.rank > 0 && bestMatch.page != currentPage}">
-            <input type="text" ng-model="search" placeholder="search the docs"
-                   tabindex="1" accesskey="s" class="search-query" focused="focused">
+          <div class="dropdown search" ng-class="{open: focused && bestMatch.rank > 0 && bestMatch.page != currentPage}">
+            <input type="text" ng-model="search" placeholder="search the docs" tabindex="1" accesskey="s" class="form-control" focused="focused">
             <ul class="dropdown-menu">
               <li>
                 <a href="{{bestMatch.page.url}}">{{bestMatch.page.shortName}}</a>
@@ -151,18 +146,17 @@
             </ul>
           </div>
           <% } else { %>
-          <input type="text" ng-model="search" placeholder="search the docs"
-                 tabindex="1" accesskey="s" class="search-query">
+          <input type="text" ng-model="search" placeholder="search the docs" tabindex="1" accesskey="s" class="form-control">
           <% } %>
           <div class="spacer"></div>
 
-          <ul class="nav nav-list well" ng-show="pages">
+          <ul class="nav well list-group" ng-show="pages">
             <li ng-repeat="page in pages track by page.url" ng-class="navClass(page)" class="api-list-item expand">
-              <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
+              <a href="{{page.url}}" tabindex="2">{{page.shortName}} Test</a>
             </li>
           </ul>
 
-          <ul class="nav nav-list well" ng-repeat="module in modules track by module.url" class="api-list-item">
+          <ul class="nav well" ng-repeat="module in modules track by module.url" class="api-list-item">
             <li class="nav-header module">
               <a class="guide">module</a>
               <a class="code" href="{{module.url}}">{{module.name}}</a>
@@ -190,17 +184,15 @@
               <a class="guide">service</a>
             </li>
             <li ng-repeat="service in module.services track by service.instance.url" ng-class="navClass(service.instance, service.provider)" class="api-list-item expand">
-              <a ng-show="service.provider" class="pull-right" href="{{service.provider.url}}" tabindex="2"><i class="icon-cog"></i></a>
+              <a ng-show="service.provider" class="pull-right" href="{{service.provider.url}}" tabindex="2"><i class="glyphicon glyphicon-cog"></i></a>
               <a href="{{service.instance.url}}" tabindex="2">{{service.name}}</a>
             </li>
-
             <li class="nav-header section" ng-show="module.types">
               <a class="guide">Types</a>
             </li>
             <li ng-repeat="page in module.types track by page.url" ng-class="navClass(page)" class="api-list-item expand">
               <a href="{{page.url}}" tabindex="2">{{page.shortName}}</a>
             </li>
-
             <li class="nav-header section" ng-show="module.globals">
               <a class="global guide">global APIs</a>
               &nbsp;
@@ -208,23 +200,17 @@
             <li ng-repeat="page in module.globals track by page.url" ng-class="navClass(page)" class="api-list-item expand">
               <a href="{{page.url}}" tabindex="2">{{page.id}}</a>
             </li>
-
           </ul>
-
         </form>
       </div>
-      <div class="span9">
-
+      <div class="col-md-9">
         <ul class="breadcrumb">
           <li ng-repeat="crumb in breadcrumb">
             <span ng-hide="crumb.url">{{crumb.name}}</span>
             <a ng-show="crumb.url" href="{{crumb.url}}">{{crumb.name}}</a>
-            <span ng-show="crumb.url" class="divider">/</span>
           </li>
         </ul>
-
         <div id="loading" ng-show="loading">Loading...</div>
-
         <div ng-hide="loading" ng-include src="currentPage.partialUrl" onload="afterPartialLoaded()" autoscroll class="content slide-reveal"></div>
 <% if (discussions) { %>
         <div id="disqus" class="disqus">
@@ -235,6 +221,5 @@
       </div>
     </div>
   </div>
-
 </body>
 </html>
