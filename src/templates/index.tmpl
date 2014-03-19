@@ -150,7 +150,7 @@
           <% } %>
           <div class="spacer"></div>
 
-          <ul class="nav well list-group" ng-show="pages">
+          <ul class="nav well" ng-show="pages">
             <li ng-repeat="page in pages track by page.url" ng-class="navClass(page)" class="api-list-item expand">
               <a href="{{page.url}}" tabindex="2">{{page.shortName}} Test</a>
             </li>

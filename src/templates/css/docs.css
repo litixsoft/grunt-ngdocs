@@ -30,12 +30,29 @@ img.AngularJS-small {
 .icon-cog {
     line-height: 13px;
 }
+
+
+#methods_close+.close {
+    color: rgb(51, 51, 51);
+    box-sizing: border-box;
+    display: block;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    opacity: 1;
+    float: none;
+    font-weight: normal;
+    text-shadow: none;
+    cursor: text;
+}
+
 /* =============================== */
 
 .nav-header {
     font-size: 11px;
     font-weight: bold;
 }
+
 .form-search {
     margin-right: 10px;
 }
@@ -53,6 +70,11 @@ img.AngularJS-small {
 
 .form-search > ul.nav > li > a {
     margin: 0;
+    padding: 9px 15px;
+}
+
+.form-search .nav>li>a.pull-right {
+    z-index: 1;
 }
 
 .form-search > ul.nav > li.module {

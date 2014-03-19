@@ -81,7 +81,7 @@ docsApp.directive.sourceEdit = function(getEmbeddedTemplate) {
   return {
     template: '<div class="btn-group pull-right">' +
         '<a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href>' +
-        '  <i class="icon-pencil icon-white"></i> Edit <span class="caret"></span>' +
+        '  <i class="glyphicon glyphicon-pencil"></i> Edit <span class="caret"></span>' +
         '</a>' +
         '<ul class="dropdown-menu">' +
         '  <li><a ng-click="plunkr($event)" href="">In Plunkr</a></li>' +
