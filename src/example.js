@@ -68,7 +68,7 @@ exports.Example.prototype.disableAnimations = function() {
 
 exports.Example.prototype.toHtml = function() {
   var html = "<h2>Source</h2>\n";
-  html += this.toHtmlEdit();
+  //html += this.toHtmlEdit();
   html += this.toHtmlTabs();
   if(this.animations) {
     html += '<div class="pull-right">';
